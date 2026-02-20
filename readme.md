@@ -1,42 +1,54 @@
-## Vandebron Frontend Developer Take-home Assessment
-Thanks for applying to Vandebron!! If you've made it this far we already think you're pretty great. Your assignment is below.
+## Vandebron Frontend Take-home — Daniel Vidal
 
-## Setup
-- Clone the project - At the end of this you'll be asked to send us a zip file including your `.git` folder. We ask that you please not create a pull request with your changes (as this will show other candidates your solutions)
-- and decide on a framework you'd like to complete the project in (currently only React).
-- Start the project by following the "Getting Started" instructions in the framework-specific readme (e.g. [web/react-example/readme.md](web/react-example/readme.md)) Compare what your app looks like now with the desired app shown below.
+### Setup
 
-<table>
-  <thead>
-    <tr>
-      <th>Example Starter App</th>
-      <th>Goal App</th>
-    </tr>
-  </thead>
-  <tr>
-    <td><img src="./web/starter-app.png" alt="Starter app" width="500"/></td>
-    <td><img src="./web/goal-app.png" alt="Goal app" width="500"/></td>
-  </tr>
-</table>
+```bash
+cd web/react-example
 
+# Install dependencies
+npm install
 
-There are several areas you can focus on. Pick what you'd like to focus on and implement those. Please don't take more than 4 hours on this.
+# Start the dev server
+npm run dev
 
-## Before we get started
-- You do not need to spend any time implementing components/features that aren't visible in the goal app.
-- You're welcome to switch the approach for styling (use a library you're familiar with) if you'd like.
-- The "OK →" button doesn't do anything... that's fine, you can leave it as-is.
+# Run tests
+npm run test
 
-## Todo
-- [ ] Update styling of the app to make it look like the goal app above.
-- [ ] There are a few bugs in the app - feel free to fix any that you find.
-- [ ] Calculate the estimated usage based on the inputs provided - there are no strict rules here but generally the "bigger" the house, the higher your consumption, same for amount of people, etc. Should return a type of `{ electricity: number, gas?: number }`.
-- [ ] For several reasons, the app isn't production-ready. Make changes so that we can be confident the app will run without issue once we're ready to release.
+# Production build
+npm run build
 
-Happy coding 😃!!
+# Lint
+npm run lint
+```
 
-## All Done?
-Once you're done, zip up your solution (with the `.git` folder included,) and send it back to us via your favorite file share: Google Drive, Dropbox, etc. During your in-person interview, we'll review the PR so be ready to discuss the changes you've made. Remember to _not_ create a pull request with your changes.
+---
 
-## After the Interview
-If you created a fork as part of this process, make sure you delete the fork (or otherwise ensure it's not visible to anyone other than yourself)
+### Changes Made
+
+#### Bug Fixes
+
+- **Infinite render loop** — `useEffect` in `HouseTypeSelector` was missing its dependency array, causing constant re-fetching.
+- **Off-by-one resident selection** — `ResidentsSelector` compared `value === index` instead of `value === index + 1`, so clicking never matched.
+- **Default residents out of range** — `ConsumptionCalculator` initialised residents to `8`, which is outside the 1–5 range. Changed to `1`.
+- **Wrong house icons** — All house types rendered the same icon. Mapped each type to its correct SVG (`apartment`, `tussenwoning`, `hoekwoning`, `2-onder-1-kap`, `vrijstaand`).
+- **Missing TypeScript annotation** — Added type for the `handleResidentsSelectorChange` parameter.
+- **Removed stray `console.log` calls** and unused state variables.
+
+#### New Features
+
+- **ProductSelector** — New controlled component for selecting energy products (Stroom, Stroom & Gas). Integrated into the calculator.
+- **Consumption calculation** — Pure function (`consumption.ts`) that estimates electricity (kWh) and gas (m³) based on house type, number of residents, selected product, and solar panel toggle. Uses Dutch-average base values with per-resident scaling and product modifiers.
+- **Solar panels toggle** — Checkbox that reduces estimated electricity by 30%.
+
+#### Styling
+
+- **Migrated from CSS Modules to Tailwind CSS v4** with the `@tailwindcss/vite` plugin.
+- Matched the layout and visual design to the goal app: two-column grid, selector button groups with inset shadows, DM Sans font, neutral colour palette, dark "Ok" button.
+- Defined custom Tailwind theme tokens (`--shadow-selector-inset`, `--color-slate-750`, etc.) instead of using JIT arbitrary values or `!important`.
+- Deleted all `.module.css` files and `Icon.module.css`.
+
+#### Code Quality
+
+- **DRY refactor** — Extracted a shared `SelectorGroup` component used by all three selectors, eliminating duplicated button markup and styling.
+- **Test suite** — Added tests for `SelectorGroup`, `ProductSelector`, `ResidentsSelector`, `consumption` logic, and `HouseTypeSelector`. 25 tests total, all passing with coverage.
+- Clean TypeScript compilation (`tsc --noEmit`), no lint errors.
