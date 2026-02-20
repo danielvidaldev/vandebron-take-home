@@ -19,7 +19,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      '@stylistic/ts/semi': 'always',
+      '@stylistic/ts/semi': ['error', 'always'],
     },
   },
 )

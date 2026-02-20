@@ -1,11 +1,3 @@
-import reactHooks from 'eslint-plugin-react-hooks'
+import rootConfig from '../../eslint.config.js';
 
-module.exports = {
-  extends: '../../eslint.config.js',
-  plugins: {
-    'react-hooks': reactHooks,
-  },
-  rules: {
-    ...reactHooks.configs.recommended.rules,
-  },
-};
+export default rootConfig;

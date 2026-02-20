@@ -1,10 +1,8 @@
-import React from 'react';
 import ConsumptionCalculator from './components/ConsumptionCalculator';
-import styles from './App.module.css';
 
 export default function App() {
   return (
-    <div className={styles.container}>
+    <div className="min-h-screen bg-white flex items-center justify-center p-6 font-sans">
       <ConsumptionCalculator />
     </div>
   );

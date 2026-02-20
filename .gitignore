@@ -38,3 +38,7 @@ vite.config.ts.timestamp-*
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Claude
+.claude
+CLAUDE.md

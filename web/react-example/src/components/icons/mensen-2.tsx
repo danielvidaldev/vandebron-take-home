@@ -1,7 +1,6 @@
-import styles from './Icon.module.css';
 export const SvgComponent = () => (
   <svg
 	viewBox="0 0 12 20"
-	className={styles.icon}>
+	>
 		<defs><path id="a" d="M0 .495h7.272v6.874H0z"></path><path id="c" d="M.302.01h4.242v4.242H.302z"></path></defs><g fillRule="evenodd" fill="currentColor"><path d="M3.636.578a2.12 2.12 0 1 0 0 4.241 2.12 2.12 0 0 0 0-4.241m0 1.088a1.034 1.034 0 0 1 0 2.066 1.033 1.033 0 0 1 0-2.066"></path><g transform="translate(0 4.93)"><mask id="b" fill="#fff"></mask><path d="M6.06.495H1.212C.542.495 0 1.038 0 1.707V7.37h7.272V1.707c0-.669-.543-1.212-1.212-1.212m0 1.088c.069 0 .124.056.124.124v4.574H1.088V1.707c0-.068.056-.124.124-.124H6.06"></path></g><path d="M2.503 17.49v-5.542a.5.5 0 1 0-1 0v6.042a.5.5 0 0 0 .5.5h3.265a.5.5 0 0 0 .5-.5v-6.042a.5.5 0 1 0-1 0v5.542H2.503z" fillRule="nonzero"></path><g transform="translate(5.985 .534)"><mask id="d" fill="#fff"></mask><path d="M2.423.01a2.12 2.12 0 1 0 0 4.242 2.12 2.12 0 0 0 0-4.242m0 1.089a1.033 1.033 0 0 1 0 2.065 1.034 1.034 0 0 1 0-2.065"></path></g><path d="M6.776 17.456v1h3.265a.5.5 0 0 0 .5-.5v-6.042h-1v5.542H6.776z" fillRule="nonzero"></path><path d="M10.832 5.392H8.16V6.48h2.673c.069 0 .124.056.124.124v4.574H8.16v1.088h3.885V6.604c0-.67-.543-1.212-1.212-1.212"></path></g></svg>
 );

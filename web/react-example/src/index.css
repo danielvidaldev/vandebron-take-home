@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --color-vandebron-50: #f0fdf4;
+  --color-vandebron-100: #dcfce7;
+  --color-vandebron-600: #16a34a;
+  --color-vandebron-700: #15803d;
+  --color-slate-750: #2d3748;
+  --color-slate-850: #1a202c;
+  --shadow-selector: 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-selector-active: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --shadow-selector-inset: inset 0 0px 8px -4px rgba(0, 0, 0, 0.15);
+}
+
+.selector-icon svg {
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
